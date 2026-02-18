@@ -109,9 +109,9 @@ export default function LandingLaboral() {
 
       {/* --- HERO SECTION --- */}
       <section id="inicio" className="relative min-h-screen flex items-center px-6 pt-28 md:pt-20 pb-12">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-yellow-500/5 to-transparent pointer-events-none"></div>
+        {/* Corrección Tailwind: bg-gradient-to-l */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-yellow-500/5 to-transparent pointer-events-none"></div>
         
-        {/* CORRECCIÓN MOBILE: grid-cols-1 para móviles, md:grid-cols-2 para desktop */}
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
           
           <motion.div 
@@ -125,7 +125,7 @@ export default function LandingLaboral() {
             </div>
             <h1 className="text-4xl md:text-7xl font-black leading-tight">
               ¿Te despidieron <br/>
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-400 to-yellow-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
                 Injustamente?
               </span>
             </h1>
@@ -150,12 +150,13 @@ export default function LandingLaboral() {
             initial="hidden"
             animate="visible"
             variants={slideInRight}
-            className="flex justify-center order-2 md:order-1" // Mobile: Imagen arriba. Desktop: Imagen derecha.
+            className="flex justify-center order-1 md:order-2" // Mobile: Imagen arriba.
           >
-            <div className="w-full h-75 md:h-125 bg-neutral-900 border border-neutral-800 rounded-2xl relative overflow-hidden shadow-2xl shadow-black/50 group">
+            {/* Corrección Tailwind: h-[300px] es mejor para mobile que h-75 que no existe */}
+            <div className="w-full h-[300px] md:h-[500px] bg-neutral-900 border border-neutral-800 rounded-2xl relative overflow-hidden shadow-2xl shadow-black/50 group">
               
               {/* --- IMAGEN HERO --- */}
-              {/* Usa una imagen de prueba de Unsplash. Cuando tengas la tuya, pon src="/tu-foto.jpg" */}
+              {/* CAMBIA EL SRC POR TU IMAGEN LOCAL, EJ: src="/mi-foto-hero.jpg" */}
               
               <img
                 src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80" 
@@ -163,7 +164,7 @@ export default function LandingLaboral() {
                 className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
               />
               
-              <div className="absolute inset-0 bg-linear-to-t from-neutral-950/80 to-transparent pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 to-transparent pointer-events-none"></div>
 
               <motion.div 
                 animate={{ y: [0, -10, 0] }}
@@ -195,7 +196,6 @@ export default function LandingLaboral() {
             <p className="text-gray-400">Nos especializamos en situaciones críticas.</p>
           </motion.div>
 
-          {/* CORRECCIÓN MOBILE: grid-cols-1 para móviles */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { title: "Despido Injustificado", desc: "Si te echaron por 'Necesidades de la Empresa' pero contrataron a otro, es ilegal.", icon: <Briefcase /> },
@@ -258,13 +258,13 @@ export default function LandingLaboral() {
               {/* FOTOS DEL EQUIPO */}
               <div className="flex gap-4 items-center py-4">
                   <div className="flex -space-x-4">
+                    {/* Sustituye estos src por tus fotos locales si las tienes */}
                     {[
                       "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&h=100&q=80",
                       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&h=100&q=80",
                       "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&h=100&q=80"
                     ].map((imgSrc, i) => (
                       <div key={i} className="relative w-12 h-12 rounded-full border border-white overflow-hidden shadow-sm bg-gray-100">
-                        {/* CORRECCIÓN: 'border-1' no existe, cambiado a 'border' */}
                         <img 
                           src={imgSrc} 
                           alt={`Equipo ${i}`} 
@@ -281,7 +281,7 @@ export default function LandingLaboral() {
 
               {/* --- IMAGEN DE OFICINA --- */}
               <div className="w-full h-64 bg-neutral-900 rounded-2xl border border-white/10 relative overflow-hidden group shadow-lg">
-                {/* Imagen de prueba Unsplash. Cámbiala por src="/oficina.jpg" cuando subas tu archivo. */}
+                {/* Corrección de la ruta de la imagen */}
                 
 
 [Image of modern law office interior]
@@ -310,7 +310,7 @@ export default function LandingLaboral() {
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Comienza tu Defensa Hoy</h2>
                         <p className="text-gray-400 mb-10 text-lg">El tiempo corre en tu contra. Los plazos para demandar son cortos. Escríbenos ahora.</p>
                         
-                        <div className="space-y-6 ">
+                        <div className="space-y-6">
                             <div className="flex items-center gap-4 text-white">
                                 <div className="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500">
                                     <Phone size={20} />
